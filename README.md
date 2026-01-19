@@ -70,6 +70,7 @@ A systematic study of four AI agent patterns—Single Agent, Multi-Agent, A2A De
 | Document | Description |
 |----------|-------------|
 | [Architecture](docs/ARCHITECTURE.md) | Deep dive into each agent pattern |
+| [MCP Tools](docs/MCP-TOOLS.md) | How we simulate MCP tool servers |
 | [Scenarios](docs/SCENARIOS.md) | The 5 test scenarios and their design rationale |
 | [Methodology](docs/METHODOLOGY.md) | Testing protocol, environment, and metrics |
 | [Findings](docs/FINDINGS.md) | Complete benchmark results and analysis |
