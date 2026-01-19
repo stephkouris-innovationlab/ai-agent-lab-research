@@ -127,7 +127,7 @@ Opus costs 5x more but knows when it doesn't know.
 |-------|-----------|--------|----------|------------|---------|
 | Single | 25,775 | 3,149 | 0.023 | 77.9% | DigitalEdge Headset Pro |
 | Multi | 35,833 | 4,042 | 0.032 | 89.7% | DigitalEdge Headset Pro |
-| A2A | 32,007 | 0 | 0.000 | 0% | (Recording Error) |
+| A2A | 47,603 | 5,022 | 0.042 | 86.9% | DigitalEdge Headphones |
 | MCP | 1,861 | 3,700 | 0.020 | 90.3% | DigitalEdge Headphones |
 
 **Best Agent:** MCP (90.3% confidence)

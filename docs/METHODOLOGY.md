@@ -215,8 +215,8 @@ data: {"type":"result","confidence":80.5,"product":"..."}
 
 ### Outlier Handling
 
-- Recording errors (A2A on Informed Decision) noted but excluded from averages
-- Impossible task results analyzed separately (0% confidence is correct, not an error)
+- Impossible task results analyzed separately (0% confidence is correct behavior, not an error)
+- All 60 benchmark runs completed successfully
 
 ### Confidence Intervals
 

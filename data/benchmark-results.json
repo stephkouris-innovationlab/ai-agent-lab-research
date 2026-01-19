@@ -32,10 +32,10 @@
     },
     {
       "agentType": "a2a",
-      "avgTimeMs": 52174,
-      "avgTokens": 5278,
+      "avgTimeMs": 51300,
+      "avgTokens": 5227,
       "avgCostUsd": 0.045,
-      "avgConfidence": 85.8,
+      "avgConfidence": 86.0,
       "sampleSize": 15
     },
     {
@@ -67,7 +67,7 @@
       "results": [
         { "agentType": "single", "timeMs": 25775, "tokens": 3149, "costUsd": 0.023, "confidence": 77.9, "productRecommended": "DigitalEdge Work-From-Home Headset Pro" },
         { "agentType": "multi", "timeMs": 35833, "tokens": 4042, "costUsd": 0.032, "confidence": 89.7, "productRecommended": "DigitalEdge Work-From-Home Headset Pro" },
-        { "agentType": "a2a", "timeMs": 32007, "tokens": 0, "costUsd": 0.000, "confidence": 0, "productRecommended": "ERROR - Recording failed" },
+        { "agentType": "a2a", "timeMs": 47603, "tokens": 5022, "costUsd": 0.042, "confidence": 86.9, "productRecommended": "DigitalEdge Wireless Noise-Canceling Headphones" },
         { "agentType": "mcp", "timeMs": 1861, "tokens": 3700, "costUsd": 0.020, "confidence": 90.3, "productRecommended": "DigitalEdge Wireless Noise-Canceling Headphones" }
       ]
     },
