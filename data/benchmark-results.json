@@ -1,0 +1,175 @@
+{
+  "metadata": {
+    "title": "AI Agent Lab Benchmark Results",
+    "version": "1.0.0",
+    "date": "2026-01-07",
+    "totalRuns": 60,
+    "apiCost": "$12",
+    "executionTime": "55 minutes"
+  },
+  "testMatrix": {
+    "agents": ["single", "multi", "a2a", "mcp"],
+    "scenarios": ["quick-purchase", "informed-decision", "balanced-choice", "data-driven", "impossible-task"],
+    "models": ["claude-haiku-4-5-20251001", "claude-sonnet-4-5-20250929", "claude-opus-4-5-20251101"],
+    "iterationsPerCombo": 1
+  },
+  "agentBenchmarks": [
+    {
+      "agentType": "single",
+      "avgTimeMs": 23604,
+      "avgTokens": 2365,
+      "avgCostUsd": 0.017,
+      "avgConfidence": 55.0,
+      "sampleSize": 15
+    },
+    {
+      "agentType": "multi",
+      "avgTimeMs": 31886,
+      "avgTokens": 3350,
+      "avgCostUsd": 0.028,
+      "avgConfidence": 63.1,
+      "sampleSize": 15
+    },
+    {
+      "agentType": "a2a",
+      "avgTimeMs": 52174,
+      "avgTokens": 5278,
+      "avgCostUsd": 0.045,
+      "avgConfidence": 85.8,
+      "sampleSize": 15
+    },
+    {
+      "agentType": "mcp",
+      "avgTimeMs": 1770,
+      "avgTokens": 3700,
+      "avgCostUsd": 0.020,
+      "avgConfidence": 83.9,
+      "sampleSize": 15,
+      "note": "MCP uses simulated tools"
+    }
+  ],
+  "scenarioBenchmarks": [
+    {
+      "scenarioId": "quick-purchase",
+      "scenarioName": "Quick Purchase",
+      "bestAgent": "mcp",
+      "results": [
+        { "agentType": "single", "timeMs": 20949, "tokens": 2612, "costUsd": 0.016, "confidence": 80.5, "productRecommended": "NovaTech USB-C Fast Charger" },
+        { "agentType": "multi", "timeMs": 25599, "tokens": 3581, "costUsd": 0.025, "confidence": 67.5, "productRecommended": "NovaTech USB-C Fast Charger" },
+        { "agentType": "a2a", "timeMs": 51825, "tokens": 5341, "costUsd": 0.047, "confidence": 77.4, "productRecommended": "NovaTech USB-C Fast Charger" },
+        { "agentType": "mcp", "timeMs": 1260, "tokens": 3700, "costUsd": 0.020, "confidence": 85.5, "productRecommended": "NovaTech USB-C Fast Charger" }
+      ]
+    },
+    {
+      "scenarioId": "informed-decision",
+      "scenarioName": "Informed Decision",
+      "bestAgent": "mcp",
+      "results": [
+        { "agentType": "single", "timeMs": 25775, "tokens": 3149, "costUsd": 0.023, "confidence": 77.9, "productRecommended": "DigitalEdge Work-From-Home Headset Pro" },
+        { "agentType": "multi", "timeMs": 35833, "tokens": 4042, "costUsd": 0.032, "confidence": 89.7, "productRecommended": "DigitalEdge Work-From-Home Headset Pro" },
+        { "agentType": "a2a", "timeMs": 32007, "tokens": 0, "costUsd": 0.000, "confidence": 0, "productRecommended": "ERROR - Recording failed" },
+        { "agentType": "mcp", "timeMs": 1861, "tokens": 3700, "costUsd": 0.020, "confidence": 90.3, "productRecommended": "DigitalEdge Wireless Noise-Canceling Headphones" }
+      ]
+    },
+    {
+      "scenarioId": "balanced-choice",
+      "scenarioName": "Balanced Choice",
+      "bestAgent": "mcp",
+      "results": [
+        { "agentType": "single", "timeMs": 30899, "tokens": 2303, "costUsd": 0.023, "confidence": 38.3, "productRecommended": "SkinFirst Electric Toothbrush" },
+        { "agentType": "multi", "timeMs": 38271, "tokens": 3029, "costUsd": 0.029, "confidence": 64.6, "productRecommended": "SkinFirst Electric Toothbrush" },
+        { "agentType": "a2a", "timeMs": 57260, "tokens": 5426, "costUsd": 0.047, "confidence": 95.5, "productRecommended": "ElectraMax Portable Bluetooth Speaker" },
+        { "agentType": "mcp", "timeMs": 2011, "tokens": 3700, "costUsd": 0.020, "confidence": 98.0, "productRecommended": "UrbanStyle Leather Minimalist Wallet" }
+      ]
+    },
+    {
+      "scenarioId": "data-driven",
+      "scenarioName": "Data-Driven",
+      "bestAgent": "mcp",
+      "results": [
+        { "agentType": "single", "timeMs": 28541, "tokens": 3759, "costUsd": 0.025, "confidence": 78.2, "productRecommended": "NovaTech USB-C Fast Charger" },
+        { "agentType": "multi", "timeMs": 40903, "tokens": 4419, "costUsd": 0.037, "confidence": 83.6, "productRecommended": "NovaTech USB-C Fast Charger" },
+        { "agentType": "a2a", "timeMs": 51115, "tokens": 5264, "costUsd": 0.045, "confidence": 75.1, "productRecommended": "NovaTech USB-C Fast Charger" },
+        { "agentType": "mcp", "timeMs": 1861, "tokens": 3700, "costUsd": 0.020, "confidence": 98.0, "productRecommended": "NovaTech USB-C Fast Charger" }
+      ]
+    },
+    {
+      "scenarioId": "impossible-task",
+      "scenarioName": "Impossible Task",
+      "bestAgent": "single",
+      "note": "Single 'wins' by correctly declining",
+      "results": [
+        { "agentType": "single", "timeMs": 11854, "tokens": 0, "costUsd": 0.000, "confidence": 0, "productRecommended": "null (correctly declined)" },
+        { "agentType": "multi", "timeMs": 18823, "tokens": 1678, "costUsd": 0.015, "confidence": 10.0, "productRecommended": "Low-confidence fallback" },
+        { "agentType": "a2a", "timeMs": 48497, "tokens": 5080, "costUsd": 0.043, "confidence": 95.0, "productRecommended": "Overconfident on impossible task" },
+        { "agentType": "mcp", "timeMs": 1857, "tokens": 3700, "costUsd": 0.020, "confidence": 47.5, "productRecommended": "Best-effort with uncertainty" }
+      ]
+    }
+  ],
+  "modelBenchmarks": [
+    {
+      "model": "claude-haiku-4-5-20251001",
+      "displayName": "Haiku 4.5",
+      "avgTimeMs": 20400,
+      "avgCostUsd": 0.010,
+      "avgConfidence": 77,
+      "costPer1000": 10,
+      "bestFor": "High-volume, cost-sensitive applications"
+    },
+    {
+      "model": "claude-sonnet-4-5-20250929",
+      "displayName": "Sonnet 4.5",
+      "avgTimeMs": 35400,
+      "avgCostUsd": 0.031,
+      "avgConfidence": 71,
+      "costPer1000": 31,
+      "bestFor": "Balanced performance and cost"
+    },
+    {
+      "model": "claude-opus-4-5-20251101",
+      "displayName": "Opus 4.5",
+      "avgTimeMs": 36000,
+      "avgCostUsd": 0.168,
+      "avgConfidence": 64,
+      "costPer1000": 168,
+      "bestFor": "Best calibration on edge cases, complex reasoning",
+      "note": "Lower avg confidence but better calibrated (correctly uncertain on impossible tasks)"
+    }
+  ],
+  "performanceRadar": {
+    "metrics": ["Speed", "Cost Efficiency", "Confidence", "Reliability", "Simplicity"],
+    "data": [
+      { "agentType": "single", "values": [58, 100, 55, 95, 100] },
+      { "agentType": "multi", "values": [43, 61, 63, 85, 50] },
+      { "agentType": "a2a", "values": [35, 38, 86, 45, 40] },
+      { "agentType": "mcp", "values": [100, 85, 84, 70, 70] }
+    ]
+  },
+  "keyInsights": [
+    {
+      "id": "a2a-tradeoffs",
+      "title": "A2A Excels at Trade-offs",
+      "summary": "95.5% confidence on competing priorities vs Single at 38%"
+    },
+    {
+      "id": "cost-efficiency",
+      "title": "Cost per 1,000 Decisions",
+      "summary": "$17 (Single) to $45 (A2A)"
+    },
+    {
+      "id": "multi-specialists",
+      "title": "Multi-Agent Wins Complex Tasks",
+      "summary": "89.7% confidence on Informed Decision"
+    },
+    {
+      "id": "graceful-failure",
+      "title": "Graceful Failure Detection",
+      "summary": "Single correctly returns null on impossible tasks"
+    },
+    {
+      "id": "model-calibration",
+      "title": "Model Calibration Varies",
+      "summary": "Opus shows best calibration on edge cases (10-18% vs Sonnet's 95%)"
+    }
+  ]
+}

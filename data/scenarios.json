@@ -1,0 +1,118 @@
+{
+  "scenarios": [
+    {
+      "id": "quick-purchase",
+      "name": "The Quick Purchase",
+      "description": "A simple, time-sensitive purchase with clear criteria. Best suited for single agent approach.",
+      "goal": "Buy a USB-C fast charger",
+      "constraints": [
+        "Budget under $30",
+        "Must ship within 2 days",
+        "Minimum 4-star rating"
+      ],
+      "budget": { "min": 0, "max": 30 },
+      "requirements": [
+        "USB-C Power Delivery support",
+        "At least 30W output",
+        "Compact and portable"
+      ],
+      "complexity": "simple",
+      "bestApproach": "single",
+      "learningObjective": "Demonstrates when a single agent is the most efficient choice. Simple tasks with clear criteria don't need the overhead of multi-agent coordination."
+    },
+    {
+      "id": "informed-decision",
+      "name": "The Informed Decision",
+      "description": "A complex purchase requiring specialized analysis across multiple dimensions. Best suited for multi-agent approach.",
+      "goal": "Purchase wireless headphones for work-from-home use",
+      "constraints": [
+        "Budget $100-250",
+        "Active noise cancellation required",
+        "Good microphone for video calls",
+        "Comfortable for 8+ hours of use"
+      ],
+      "budget": { "min": 100, "max": 250 },
+      "requirements": [
+        "Noise cancellation for focus",
+        "Clear microphone for meetings",
+        "Long battery life (20+ hours)",
+        "Comfortable padding",
+        "Good return policy"
+      ],
+      "complexity": "complex",
+      "bestApproach": "multi",
+      "learningObjective": "Shows the value of specialized agents. A Price Agent can analyze value, a Quality Agent can evaluate specs, and a User Preference Agent can match to work-from-home needs. The orchestrator synthesizes these perspectives into a better decision."
+    },
+    {
+      "id": "balanced-choice",
+      "name": "The Balanced Choice",
+      "description": "A purchase where budget, quality, speed, AND sustainability all matter equally. Requires negotiation between competing priorities.",
+      "goal": "Buy a gift for an eco-conscious friend who values quality but you have limited budget and time",
+      "constraints": [
+        "Budget $40-80 (want to save but not look cheap)",
+        "Must arrive within 5 days (birthday coming up)",
+        "Should be eco-friendly (friend cares deeply)",
+        "Must be high quality (friend appreciates craftsmanship)"
+      ],
+      "budget": { "min": 40, "max": 80 },
+      "requirements": [
+        "Eco-friendly or sustainable product",
+        "Good build quality and durability",
+        "Reasonable price for a gift",
+        "Fast enough shipping for birthday",
+        "Something thoughtful, not generic"
+      ],
+      "complexity": "moderate",
+      "bestApproach": "a2a",
+      "learningObjective": "Demonstrates when peer debate adds value. With four competing priorities (budget, quality, speed, sustainability), having specialized advocates debate and negotiate leads to a more balanced decision than a single perspective."
+    },
+    {
+      "id": "data-driven",
+      "name": "The Smart Shopper",
+      "description": "A purchase where historical data, price trends, and review analysis are crucial. Best suited for MCP tool-enhanced approach.",
+      "goal": "Find the best deal on a popular electronics item by analyzing price history and reviews",
+      "constraints": [
+        "Budget up to $150",
+        "Want the best VALUE not just lowest price",
+        "Need to verify the product quality through reviews",
+        "Prefer buying when price is at/near lowest"
+      ],
+      "budget": { "min": 0, "max": 150 },
+      "requirements": [
+        "Check if current price is good vs historical",
+        "Analyze review sentiment and common issues",
+        "Find any active deals or discounts",
+        "Compare similar products objectively",
+        "Data-backed recommendation"
+      ],
+      "complexity": "moderate",
+      "bestApproach": "mcp",
+      "learningObjective": "Demonstrates the power of tool use. The MCP agent can query price history databases, analyze review sentiment, find deals, and compare products using external tools - providing data-driven insights that pure reasoning cannot match."
+    },
+    {
+      "id": "impossible-task",
+      "name": "The Impossible Task",
+      "description": "A scenario with contradictory requirements designed to show how agents handle failure gracefully.",
+      "goal": "Find the perfect product meeting ALL requirements",
+      "constraints": [
+        "Must be the absolute cheapest option",
+        "Must be the highest quality available",
+        "Must ship same-day",
+        "Must be the most eco-friendly option",
+        "Must have 5-star ratings only"
+      ],
+      "budget": { "min": 0, "max": 10 },
+      "requirements": [
+        "Premium materials only",
+        "Carbon neutral certified",
+        "1000+ verified reviews",
+        "Free returns",
+        "Made in USA"
+      ],
+      "complexity": "complex",
+      "bestApproach": "single",
+      "bestApproachNote": "Single 'wins' by failing fastest and cheapest - don't throw expensive architectures at unsolvable problems",
+      "learningObjective": "Demonstrates graceful failure handling. Good agents recognize impossible requirements and explain trade-offs rather than pretending to succeed. This scenario teaches that agents have limitations and should communicate them clearly."
+    }
+  ]
+}
