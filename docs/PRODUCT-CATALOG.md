@@ -8,7 +8,7 @@ The benchmark testing uses a curated catalog of 60 synthetic products designed t
 
 | Metric | Value |
 |--------|-------|
-| Total Products | 60 |
+| Total Products | ~60 |
 | Categories | 8 |
 | Price Range | $15 - $350 |
 | Average Rating | 4.2 stars |
@@ -27,6 +27,8 @@ The benchmark testing uses a curated catalog of 60 synthetic products designed t
 | Furniture | 7 | $79 - $1,999 | Office chairs, desks, sofas |
 | Sports & Outdoors | 7 | $19 - $499 | Yoga mats, dumbbells, camping gear |
 | Beauty | 7 | $14 - $199 | Skincare, haircare, oral care |
+
+*Note: Product counts are approximate based on template generation.*
 
 ---
 

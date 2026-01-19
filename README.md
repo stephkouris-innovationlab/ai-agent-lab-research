@@ -88,7 +88,7 @@ On the same "Balanced Choice" scenario, each architecture recommended a **differ
 |--------------|----------------|------------|-----|
 | Single Agent | SkinFirst Toothbrush | 38% | First satisfactory match |
 | Multi-Agent | SkinFirst Toothbrush | 65% | Specialist consensus |
-| A2A Debate | ElectraMax Speaker | 95% | Negotiated compromise |
+| A2A Debate | ElectraMax Speaker | 95.5% | Negotiated compromise |
 | MCP-Enhanced | UrbanStyle Wallet | 98% | Data-driven best value |
 
 **Insight:** The architecture you choose encodes decision-making values. None is "correct"—each reflects a different theory of good decision-making.

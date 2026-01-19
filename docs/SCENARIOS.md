@@ -6,15 +6,17 @@ This document describes the five scenarios used to benchmark agent architectures
 
 ## Overview
 
-| Scenario | Complexity | Best Agent | Purpose |
-|----------|------------|------------|---------|
-| Quick Purchase | Simple | Single | Test speed/efficiency on clear decisions |
-| Informed Decision | Complex | Multi-Agent | Test depth of analysis |
-| Balanced Choice | Moderate | A2A Debate | Test trade-off handling |
-| Data-Driven | Moderate | MCP-Enhanced | Test data integration |
-| Impossible Task | Complex | Single* | Test graceful failure |
+| Scenario | Complexity | Designed For | Actual Winner | Purpose |
+|----------|------------|--------------|---------------|---------|
+| Quick Purchase | Simple | Single | MCP (85.5%) | Test speed/efficiency on clear decisions |
+| Informed Decision | Complex | Multi-Agent | MCP (90.3%) | Test depth of analysis |
+| Balanced Choice | Moderate | A2A Debate | MCP (98%) | Test trade-off handling |
+| Data-Driven | Moderate | MCP-Enhanced | MCP (98%) | Test data integration |
+| Impossible Task | Complex | Single* | Single (0%) | Test graceful failure |
 
 *Single "wins" by failing correctly
+
+**Note:** "Designed For" reflects the architecture each scenario was crafted to test. "Actual Winner" shows which agent achieved highest confidence in benchmarks. MCP's simulated tools gave it an advantage in confidence scores, but the design intent shows which architecture pattern each scenario was meant to exercise.
 
 ---
 

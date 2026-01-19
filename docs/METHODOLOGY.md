@@ -150,14 +150,14 @@ Our test catalog contains 60 curated products designed to enable meaningful agen
 
 | Category | Count | Examples |
 |----------|-------|----------|
-| Electronics | 12 | Chargers, headphones, speakers |
-| Kitchen | 8 | Blenders, coffee makers, cookware |
-| Office | 8 | Mice, keyboards, monitors |
-| Health & Personal | 8 | Fitness trackers, toothbrushes |
-| Home | 8 | Smart lights, storage, decor |
-| Entertainment | 6 | Streaming, gaming accessories |
-| Fashion | 5 | Wallets, bags, accessories |
-| Food & Supplements | 5 | Vitamins, snacks, beverages |
+| Electronics | 9 | Chargers, headphones, speakers, webcams |
+| Home Appliances | 7 | Coffee makers, vacuums, air purifiers |
+| Fashion | 7 | T-shirts, jeans, wallets, boots |
+| Books & Media | 6 | Business books, tech guides, courses |
+| Groceries | 7 | Coffee, snacks, supplements |
+| Furniture | 7 | Office chairs, desks, sofas |
+| Sports & Outdoors | 7 | Yoga mats, dumbbells, camping gear |
+| Beauty | 7 | Skincare, haircare, oral care |
 
 **Price Range:** $15 - $350
 **Average Rating:** 4.2 stars

@@ -31,7 +31,7 @@ When priorities compete, the debate pattern genuinely negotiates trade-offs. Thi
 Balanced Choice Confidence:
 Single  ███████████████████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  38%
 Multi   ████████████████████████████████░░░░░░░░░░░░░░░░░░  65%
-A2A     ███████████████████████████████████████████████░░░  96%
+A2A     ███████████████████████████████████████████████░░░  95.5%
 MCP     █████████████████████████████████████████████████░  98%
 ```
 
@@ -63,7 +63,7 @@ On Balanced Choice:
 |-------|---------|------------|
 | Single | SkinFirst Toothbrush | 38% |
 | Multi | SkinFirst Toothbrush | 65% |
-| A2A | ElectraMax Speaker | 96% |
+| A2A | ElectraMax Speaker | 95.5% |
 | MCP | UrbanStyle Wallet | 98% |
 
 **Insight:** Each architecture encodes different values. Choose based on decision type.
