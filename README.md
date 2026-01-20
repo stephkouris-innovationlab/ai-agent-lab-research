@@ -17,7 +17,7 @@ A systematic study of four AI agent patterns—Single Agent, Multi-Agent, A2A De
 |---------|---------|
 | **Architecture > Model** | Multi-Agent Sonnet outperformed Single Agent Opus on complex tasks |
 | **A2A Excels at Trade-offs** | 95.5% confidence on competing priorities vs Single Agent at 38% |
-| **Calibration Matters** | Opus knows when it doesn't know (10-18% on impossible tasks vs Sonnet's 95%) |
+| **A2A Calibration Risk** | A2A Sonnet shows 95% confidence on impossible tasks—a dangerous failure mode. Opus is well-calibrated (10-18%) |
 | **Cost-Confidence Trade-off** | A2A costs 2.6x more but delivers 1.6x higher confidence |
 
 ### Quick Numbers
@@ -30,14 +30,16 @@ A systematic study of four AI agent patterns—Single Agent, Multi-Agent, A2A De
 
 ## Agent Architectures Tested
 
-| Agent | Description | Avg Time | Avg Cost | Avg Confidence |
-|-------|-------------|----------|----------|----------------|
-| **Single Agent** | One LLM, one decision | 24s | $0.017 | 55% |
-| **Multi-Agent** | Orchestrator + 5 specialists | 32s | $0.028 | 63% |
-| **A2A Debate** | Peer agents negotiate consensus | 52s | $0.045 | 86% |
-| **MCP-Enhanced*** | Agent with external tools | 1.8s | $0.020 | 84% |
+| Agent | Description | Avg Time | Avg Cost | Avg Confidence† |
+|-------|-------------|----------|----------|-----------------|
+| **Single Agent** | One LLM, one decision | 27s | $0.022 | 69% |
+| **Multi-Agent** | Orchestrator + 5 specialists | 35s | $0.031 | 76% |
+| **A2A Debate** | Peer agents negotiate consensus | 52s | $0.045 | 84% |
+| **MCP-Enhanced*** | Agent with external tools | 1.8s | $0.020 | 93% |
 
 *\*MCP uses simulated tools for demonstration purposes*
+
+†**Note:** Confidence averages are from 4 primary scenarios only. The 5th scenario (Edge Case Testing) tests calibration with impossible requirements—A2A's 95% confidence there is a **failure mode** (overconfidence), not success.
 
 ---
 
@@ -94,18 +96,18 @@ On the same "Balanced Choice" scenario, each architecture recommended a **differ
 
 **Insight:** The architecture you choose encodes decision-making values. None is "correct"—each reflects a different theory of good decision-making.
 
-### 2. Graceful Failure Detection
+### 2. Edge Case Calibration (Critical Finding)
 
 When given impossible requirements (premium laptop under $200):
 
-| Agent | Response | Confidence |
-|-------|----------|------------|
-| Single Agent | Correctly declined | 0% |
-| Multi-Agent | Low-confidence fallback | 10% |
-| A2A (Sonnet) | Overconfident recommendation | 95% |
-| A2A (Opus) | Well-calibrated uncertainty | 10-18% |
+| Agent | Response | Confidence | Assessment |
+|-------|----------|------------|------------|
+| Single Agent | Correctly declined | 0% | ✅ CORRECT |
+| Multi-Agent | Low-confidence fallback | 10% | ✅ CORRECT |
+| A2A (Sonnet) | Overconfident recommendation | 95% | ❌ FAILURE |
+| A2A (Opus) | Well-calibrated uncertainty | 10-18% | ✅ CORRECT |
 
-**Insight:** For high-stakes applications, model calibration matters more than raw capability.
+**Critical Insight:** A2A Sonnet's 95% confidence on impossible tasks is a **dangerous failure mode**, not impressive performance. For production systems, this overconfidence could lead to recommending nonexistent products. Opus's 5x cost premium buys genuine calibration.
 
 ### 3. Cost-Efficiency Sweet Spots
 

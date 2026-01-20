@@ -20,6 +20,21 @@ The MCP-Enhanced agent calls simulated tool functions, not real Claude API tool-
 
 ## Medium Severity
 
+### A2A Calibration on Edge Cases
+
+**Impact:** Medium
+
+A2A Debate (with Sonnet) shows **dangerous overconfidence** (95%) on impossible tasks—recommending nonexistent products when it should decline. This is a calibration failure, not a strength.
+
+**Mitigation:**
+- We exclude Edge Case Testing from primary scenario averages
+- The "Top Performer" metric uses only the 4 primary scenarios
+- A2A's weakness is clearly documented throughout findings
+
+**What This Means:** If you deploy A2A in production, implement additional validation for edge cases. Consider using Opus (well-calibrated at 10-18%) for high-stakes decisions, or add explicit impossibility detection before A2A debate.
+
+---
+
 ### LLM Non-Determinism
 
 **Impact:** Medium

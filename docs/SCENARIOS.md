@@ -12,9 +12,9 @@ This document describes the five scenarios used to benchmark agent architectures
 | Informed Decision | Complex | Multi-Agent | MCP (90.3%) | Test depth of analysis |
 | Balanced Choice | Moderate | A2A Debate | MCP (98%) | Test trade-off handling |
 | Data-Driven | Moderate | MCP-Enhanced | MCP (98%) | Test data integration |
-| Impossible Task | Complex | Single* | Single (0%) | Test graceful failure |
+| Edge Case Testing | Complex | Single* | Single (0%) | Test confidence calibration |
 
-*Single "wins" by failing correctly
+*Single "wins" by correctly declining. A2A's 95% confidence is a FAILURE.
 
 **Note:** "Designed For" reflects the architecture each scenario was crafted to test. "Actual Winner" shows which agent achieved highest confidence in benchmarks. MCP's simulated tools gave it an advantage in confidence scores, but the design intent shows which architecture pattern each scenario was meant to exercise.
 
@@ -182,7 +182,9 @@ Demonstrates the power of tool use. The MCP agent can query price history databa
 
 ---
 
-## 5. The Impossible Task
+## 5. Edge Case Testing (Calibration Scenario)
+
+> ⚠️ **IMPORTANT**: This scenario tests **confidence calibration**, not performance. High confidence here is a **FAILURE**, not success.
 
 ### Goal
 Find the perfect product meeting ALL requirements
@@ -209,25 +211,29 @@ Requirements are **intentionally contradictory**:
 - Premium materials for under $10
 - 1000+ reviews AND same-day shipping
 
-No product can satisfy all constraints. This tests how agents handle failure.
+No product can satisfy all constraints. This tests **confidence calibration**—can agents recognize when they should NOT recommend?
 
 ### Expected Behavior
 
-| Agent | Expected | Actual |
-|-------|----------|--------|
-| Single | Recognize impossibility | 0% confidence, null (correct) |
-| Multi | Low confidence | 10% confidence (appropriate) |
-| A2A Sonnet | May force consensus | 95% confidence (dangerous!) |
-| A2A Opus | Better calibrated | 10-18% confidence (correct) |
-| MCP | Uncertain response | 47.5% confidence |
+| Agent | Expected | Actual | Assessment |
+|-------|----------|--------|------------|
+| Single | Recognize impossibility | 0% confidence, null | ✅ **CORRECT** |
+| Multi | Low confidence | 10% confidence | ✅ **CORRECT** |
+| A2A Sonnet | Should decline | 95% confidence | ❌ **FAILURE** |
+| A2A Opus | Better calibrated | 10-18% confidence | ✅ **CORRECT** |
+| MCP | Uncertain response | 47.5% confidence | ⚠️ Moderate |
 
 ### Learning Objective
 
-Demonstrates graceful failure handling. Good agents recognize impossible requirements and explain trade-offs rather than pretending to succeed. This scenario teaches that agents have limitations and should communicate them clearly.
+Demonstrates **calibration testing**. Good agents recognize impossible requirements and express appropriate uncertainty. This scenario reveals a critical flaw in A2A Sonnet: **dangerous overconfidence** when it should be uncertain.
 
 ### Critical Finding
 
-**Sonnet A2A was overconfident** (95%) on an impossible task—recommending an "Unknown" product that didn't exist. **Opus A2A was well-calibrated** (10-18%). For high-stakes applications, model calibration matters more than raw capability.
+> ❌ **A2A FAILURE MODE**: Sonnet A2A reported 95% confidence on an impossible task—recommending an "Unknown" product that didn't exist. This is **not** impressive performance; it's a **dangerous calibration failure**.
+>
+> ✅ **Correct Behaviors**: Single (0%) and Multi (10%) correctly declined or expressed uncertainty.
+>
+> For high-stakes applications, model calibration matters more than raw capability. A2A's high average confidence across scenarios is **inflated** by this failure mode.
 
 ---
 
@@ -274,7 +280,7 @@ MCP     ████████████████████████
 Informed Decision
 Single  ██████████████████████████████████████░░░░░░░░░░░░  77.9%
 Multi   ████████████████████████████████████████████░░░░░░  89.7%
-A2A     (Recording Error)
+A2A     ████████████████████████████████████████████░░░░░░  86.9%
 MCP     █████████████████████████████████████████████░░░░░  90.3%
 
 Balanced Choice
@@ -283,9 +289,9 @@ Multi   ████████████████████████
 A2A     ███████████████████████████████████████████████░░░  95.5%
 MCP     █████████████████████████████████████████████████░  98.0%
 
-Impossible Task
-Single  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░   0% ✓
-Multi   █████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  10% ✓
-A2A     ███████████████████████████████████████████████░░░  95% ✗
+Edge Case Testing (Calibration Test - lower is better!)
+Single  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░   0% ✅ CORRECT
+Multi   █████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  10% ✅ CORRECT
+A2A     ███████████████████████████████████████████████░░░  95% ❌ FAILURE
 MCP     ███████████████████████░░░░░░░░░░░░░░░░░░░░░░░░░░░  47.5%
 ```

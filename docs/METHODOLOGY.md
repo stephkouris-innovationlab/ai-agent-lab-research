@@ -9,9 +9,20 @@ This document describes how we conducted benchmark testing, the environment conf
 | Dimension | Values | Count |
 |-----------|--------|-------|
 | Agent Types | Single, Multi, A2A, MCP | 4 |
-| Scenarios | Quick Purchase, Informed Decision, Balanced Choice, Data-Driven, Impossible Task | 5 |
+| Scenarios | Quick Purchase, Informed Decision, Balanced Choice, Data-Driven, Edge Case Testing | 5 |
 | Models | Haiku 4.5, Sonnet 4.5, Opus 4.5 | 3 |
 | **Total Runs** | 4 × 5 × 3 | **60** |
+
+### Primary vs Calibration Scenarios
+
+We distinguish between two types of scenarios for metric calculations:
+
+| Category | Scenarios | Purpose | Metric Usage |
+|----------|-----------|---------|--------------|
+| **Primary (4)** | Quick Purchase, Informed Decision, Balanced Choice, Data-Driven | Test decision-making quality | Used for "Top Performer" and confidence averages |
+| **Calibration (1)** | Edge Case Testing | Test confidence accuracy on impossible tasks | Excluded from performance averages |
+
+**Why the distinction?** The Edge Case Testing scenario has intentionally contradictory requirements. High confidence there indicates **overconfidence** (failure), not good performance. Including it in averages would artificially inflate A2A's scores (95% on impossible = bad, not good).
 
 ### Summary Statistics
 

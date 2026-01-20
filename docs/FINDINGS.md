@@ -6,16 +6,18 @@ Complete benchmark results and analysis from 60 runs across 4 agent architecture
 
 ## Executive Summary
 
-### Top-Level Results
+### Top-Level Results (Primary Scenarios)
 
-| Agent | Avg Time | Avg Cost | Avg Confidence | Best Scenario |
-|-------|----------|----------|----------------|---------------|
-| Single | 23.6s | $0.017 | 55% | Quick Purchase, Impossible Task |
-| Multi | 31.9s | $0.028 | 63% | Informed Decision |
-| A2A | 52.2s | $0.045 | 86% | Balanced Choice |
-| MCP* | 1.77s | $0.020 | 84% | Data-Driven |
+| Agent | Avg Time | Avg Cost | Avg Confidence† | Best Scenario |
+|-------|----------|----------|-----------------|---------------|
+| Single | 27s | $0.022 | 69% | Quick Purchase |
+| Multi | 35s | $0.031 | 76% | Informed Decision |
+| A2A | 52s | $0.045 | 84% | Balanced Choice |
+| MCP* | 1.8s | $0.020 | 93% | Data-Driven |
 
 *MCP uses simulated tools
+
+†**Note:** Averages are from **4 primary scenarios only**. The 5th scenario (Edge Case Testing) tests calibration, not performance—A2A's 95% confidence there is a **failure mode**, not success. Including it would artificially inflate A2A's average.
 
 ---
 
@@ -74,16 +76,19 @@ On Balanced Choice:
 
 *Our implementation uses simulated tools. Real MCP integration would enable live data access.
 
-### 6. Graceful Failure Detection
+### 6. Edge Case Calibration (Critical Finding)
 
-**Finding:** Single Agent correctly returns null on impossible tasks (0% confidence).
+**Finding:** A2A Sonnet shows **dangerous overconfidence** (95%) on impossible tasks—this is a FAILURE MODE, not impressive performance.
 
-| Agent | Impossible Task Response |
-|-------|--------------------------|
-| Single | 0% confidence, null (correct) |
-| Multi | 10% confidence (appropriate) |
-| A2A Sonnet | 95% confidence (dangerous!) |
-| A2A Opus | 10-18% confidence (calibrated) |
+| Agent | Edge Case Response | Confidence | Assessment |
+|-------|-------------------|------------|------------|
+| Single | Correctly declined | 0% | ✅ CORRECT |
+| Multi | Low-confidence fallback | 10% | ✅ CORRECT |
+| A2A Sonnet | Overconfident recommendation | 95% | ❌ FAILURE |
+| A2A Opus | Well-calibrated uncertainty | 10-18% | ✅ CORRECT |
+| MCP | Moderate uncertainty | 47.5% | ⚠️ Moderate |
+
+> **Why This Matters:** A2A's high average confidence across all scenarios is **inflated by this failure mode**. When we exclude Edge Case Testing from averages (as we should for performance metrics), MCP emerges as the top performer, not A2A. The 95% confidence on impossible requirements is not impressive—it's dangerous for production systems.
 
 ### 7. Model Calibration Varies
 
@@ -154,16 +159,20 @@ Opus costs 5x more but knows when it doesn't know.
 
 **Best Agent:** MCP (designed for data-driven decisions)
 
-#### Impossible Task
+#### Edge Case Testing (Calibration Scenario)
 
-| Agent | Time (ms) | Tokens | Cost ($) | Confidence | Product |
-|-------|-----------|--------|----------|------------|---------|
-| Single | 11,854 | 0 | 0.000 | 0% | null (correctly declined) |
-| Multi | 18,823 | 1,678 | 0.015 | 10% | Low-confidence fallback |
-| A2A | 48,497 | 5,080 | 0.043 | 95% | Overconfident on impossible |
-| MCP | 1,857 | 3,700 | 0.020 | 47.5% | Best-effort with uncertainty |
+> ⚠️ **This scenario tests calibration, not performance. Lower confidence is BETTER here.**
 
-**Best Agent:** Single (correctly recognized impossibility)
+| Agent | Time (ms) | Tokens | Cost ($) | Confidence | Assessment |
+|-------|-----------|--------|----------|------------|------------|
+| Single | 11,854 | 0 | 0.000 | 0% | ✅ CORRECT |
+| Multi | 18,823 | 1,678 | 0.015 | 10% | ✅ CORRECT |
+| A2A | 48,497 | 5,080 | 0.043 | 95% | ❌ FAILURE |
+| MCP | 1,857 | 3,700 | 0.020 | 47.5% | ⚠️ Moderate |
+
+**Best Agent:** Single (correctly recognized impossibility with 0% confidence)
+
+**Critical Note:** A2A's 95% confidence here is a **dangerous failure mode**—it recommended an "Unknown" product that didn't exist. This result is excluded from primary scenario averages because it tests calibration, not decision-making quality.
 
 ---
 
