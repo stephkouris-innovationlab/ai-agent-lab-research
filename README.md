@@ -2,7 +2,7 @@
 
 **Comparing AI Agent Architectures for E-commerce Decision Making**
 
-A systematic study of four AI agent patterns—Single Agent, Multi-Agent, A2A Debate, and MCP-Enhanced—across 60 benchmark runs using Claude Haiku, Sonnet, and Opus models.
+A systematic study of three primary AI agent patterns (Single Agent, Multi-Agent, A2A Debate) plus one tool-augmented agent (MCP-Enhanced) across 60 unique benchmark combinations using Claude Haiku, Sonnet, and Opus models.
 
 [![Live Demo](https://img.shields.io/badge/Live%20Demo-ai--agent--simulator.vercel.app-blue)](https://ai-agent-simulator.vercel.app)
 [![License: CC BY-NC 4.0](https://img.shields.io/badge/License-CC%20BY--NC%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc/4.0/)
@@ -30,14 +30,21 @@ A systematic study of four AI agent patterns—Single Agent, Multi-Agent, A2A De
 
 ## Agent Architectures Tested
 
+### Primary Agents (Pure Reasoning)
+
 | Agent | Description | Avg Time | Avg Cost | Avg Confidence† |
 |-------|-------------|----------|----------|-----------------|
 | **Single Agent** | One LLM, one decision | 27s | $0.022 | 69% |
 | **Multi-Agent** | Orchestrator + 5 specialists | 35s | $0.031 | 76% |
 | **A2A Debate** | Peer agents negotiate consensus | 52s | $0.045 | 84% |
+
+### Tool-Augmented Agent (Separate Category)
+
+| Agent | Description | Avg Time | Avg Cost | Avg Confidence† |
+|-------|-------------|----------|----------|-----------------|
 | **MCP-Enhanced*** | Agent with external tools | 1.8s | $0.020 | 93% |
 
-*\*MCP uses simulated tools for demonstration purposes*
+*\*MCP uses simulated tools for demonstration purposes. Shown separately since comparing tool-augmented agents with pure reasoning agents isn't a fair comparison.*
 
 †**Note:** Confidence averages are from 4 primary scenarios only. The 5th scenario (Edge Case Testing) tests calibration with impossible requirements—A2A's 95% confidence there is a **failure mode** (overconfidence), not success.
 
